@@ -28,7 +28,9 @@ import static org.hamcrest.Matchers.anything;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,21 +59,43 @@ public class MenuActivityScreenTest {
      */
     @Rule
     public ActivityTestRule<MenuActivity> mActivityTestRule = new ActivityTestRule<>(MenuActivity.class);
-
+    
+    @Before
+    public void setUp() throws Exception {
+        Log.d("PSX", "MenuActivityScreenTest ok");
+    }
+    
     /**
      * Clicks on a GridView item and checks it opens up the OrderActivity with the correct details.
      */
+//    @Test
+//    public void clickGridViewItem_OpensOrderActivity() {
+//        Log.d("PSX", "clickGridViewItem_OpensOrderActivity ok");
+//        // Uses {@link Espresso#onData(org.hamcrest.Matcher)} to get a reference to a specific
+//        // gridview item and clicks it.
+//        //onData(anything()).inAdapterView(withId(R.id.tea_grid_view)).atPosition(1).perform(click());
+//        onData(anything()).inAdapterView(withId(R.id.tea_grid_view)).atPosition(1).onChildView(withId(R.id.)).perform(click());
+//        //onData(anything()).inAdapterView(withId(R.id.my_grid_view)).atPosition(0).onChildView(withId(R.id.item_image)).perform(click());
+//        //onData(anything()).inAdapterView(withId(R.id.tea_grid_view)).atPosition(1).onChildView(withId(R.id.)).perform(click());
+//
+//        // Checks that the OrderActivity opens with the correct tea name displayed
+//        //onView(withId(R.id.tea_name_text_view)).check(matches(withText(TEA_NAME)));
+//        Log.d("PSX", "Tea name-> " + onView(withId(R.id.tea_name_text_view)).toString());
+//
+//
+//    }
+
     @Test
     public void clickGridViewItem_OpensOrderActivity() {
-
+    
         // Uses {@link Espresso#onData(org.hamcrest.Matcher)} to get a reference to a specific
         // gridview item and clicks it.
         onData(anything()).inAdapterView(withId(R.id.tea_grid_view)).atPosition(1).perform(click());
-
+    
         // Checks that the OrderActivity opens with the correct tea name displayed
         onView(withId(R.id.tea_name_text_view)).check(matches(withText(TEA_NAME)));
-
-
+    
+    
     }
 
 }
